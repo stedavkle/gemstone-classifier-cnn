@@ -8,7 +8,7 @@ from random import randint
 
 import numpy as np
 
-root_path = '/home/david/projects/Gemstones-Convolutional-Neural-Network/1_Fetch_data/data/gempundit_nohands_crop_1k'
+root_path = r"C:\Users\david\Documents\projects\gemstone-classifier-cnn\data\archive"
 #%%
 number_of_pictures = {}
 for root, dirs, files in os.walk(root_path):
@@ -30,7 +30,7 @@ print('{} classes with {} images in total'.format(TOTAL_CLASSES, TOTAL_IMAGES))
 #%%
 f, ax = plt.subplots(figsize=(15,6))
 # set y axis limit to 2000
-ax.set_ylim(0, 1000)
+ax.set_ylim(0, 400)
 plt.bar(range(TOTAL_CLASSES), [int(x*0.8) for x in number_of_pictures.values()], label = 'Train data')
 plt.bar(range(TOTAL_CLASSES), [int(x*0.2) for x in number_of_pictures.values()], label = 'Test data')
 ax.grid()
