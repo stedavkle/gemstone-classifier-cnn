@@ -6,6 +6,7 @@ import os
 
 base = 'https://www.edelsteine.at/'
 lexicon = 'https://www.edelsteine.at/en/glossaries/lexicon/'
+data_path = r"C:/Users/david/Documents/projects/gemstone-classifier-cnn/data/mix/"
 #%%
 def get_gemstone_links():
     names_paths = {}
@@ -14,7 +15,8 @@ def get_gemstone_links():
     return names_paths
 #%%
 def download_images(gem, link):
-    path = 'data/' + gem
+    path = data_path + gem.replace('/', '')
+    path = path.replace('\"', '')
     if not os.path.exists(path):
         os.mkdir(path)
     html = requests.get(link).text
@@ -25,7 +27,6 @@ def download_images(gem, link):
     for picture in pictures:
         if '/z/images/' in picture.get('src'):
             img_link = base + picture.get('src')
-
             if not os.path.exists(path + '/' + img_link.split('/')[-1]):
                 img = requests.get(img_link, stream=True)
                 if img.status_code == 200:    # OK

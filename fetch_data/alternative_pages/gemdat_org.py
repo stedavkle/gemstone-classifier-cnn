@@ -8,6 +8,8 @@ import os
 base = 'https://www.gemdat.org/'
 index = 'https://www.gemdat.org/gemindex.php'
 gallery_link = 'https://www.gemdat.org/gallery.php'
+data_path = r"C:/Users/david/Documents/projects/gemstone-classifier-cnn/data/mix/"
+
 #%%
 def get_gemstone_names(table):
     for elem in table:
@@ -18,7 +20,7 @@ def get_gemstone_names(table):
     return names_paths
 #%%
 def download_images(gem, id):
-    path = 'data/' + gem
+    path = data_path + gem
     print(path)
     if not os.path.exists(path):
         os.mkdir(path)

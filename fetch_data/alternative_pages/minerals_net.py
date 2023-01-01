@@ -10,6 +10,8 @@ import os
 
 global gems
 gems = 'https://www.minerals.net/'
+data_path = r"C:/Users/david/Documents/projects/gemstone-classifier-cnn/data/mix/"
+
 
 def get_gemstones_names(ta):
     '''get gemstones names and links to pages
@@ -23,7 +25,7 @@ def get_gemstones_names(ta):
 
 
 def download_images(key, value):
-    key = 'data/' + key
+    key = data_path + key
     img_link = ''
     print('-'*8, key, '-'*8)
     gem_link = gems+value
