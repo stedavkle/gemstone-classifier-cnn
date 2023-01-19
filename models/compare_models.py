@@ -80,13 +80,15 @@ import pandas as pd
 
 df = pd.DataFrame()
 for h in historys:
-    if not '2k' in h or not 'mobile' in h:
+    if not '2k' in h or not 'mobilenet' in h:
         continue
     print(h)
-    accuracy = historys[h]['val_accuracy']
+    accuracy = historys[h]['accuracy']
+    val_accuracy = historys[h]['val_accuracy']
     top_3_acc = historys[h]['val_top_3_acc']
     top_5_acc = historys[h]['val_top_5_acc']
     loss = historys[h]['loss']
+    val_loss = historys[h]['val_loss']
 
 
     # create dataframe and add val_accuracy as a row to the dataframe
@@ -94,11 +96,14 @@ for h in historys:
     # add h as a column to the dataframe
     
     df['loss'] = loss
-    df['accuracy'] = historys[h]['accuracy']
-    df['val_accuracy'] = accuracy
+    df['val_loss'] = val_loss
+    #df['val_accuracy'] = val_accuracy
+    #df['val_top_3_acc'] = top_3_acc
+    #df['val_top_5_acc'] = top_5_acc
     
     
-    df.to_excel('mobilenet_2k_loss_acc.xlsx')
+    
+    #df.to_excel('mobilenet_loss_2k_15ep.xlsx')
     
 
 
